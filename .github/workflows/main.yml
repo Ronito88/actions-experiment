@@ -1,11 +1,18 @@
-name: Hello World Training Workflow
+name: Workflow testing
 
 on:
   workflow_dispatch:
-
+  push: 
+    branches: [ "main" ]
+  pull_request: 
+    branches: [ "main" ]
 jobs:
-  greet:
+  experimental-greet:
     runs-on: ubuntu-latest
     steps:
       - name: Greet the User
         run: echo "Hello World!"
+  # List all files in the current directory for comparison before and after actions/checkout@v2.
+      - run: ls -l
+      - uses: actions/checkout@v2
+      - run: ls -l
